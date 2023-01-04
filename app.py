@@ -57,7 +57,7 @@ def main():
   playlist_ids.append(recommend["tracks"][0]["id"])
   print(recommend["tracks"][0]["name"],recommend["tracks"][0]["id"])
 
-  pl = sp.user_playlist_create(user=sp.me()["id"], name=f"POMODORO: {datetime.datetime.now().strftime('%Y%m%d%H%M%S')}", public=False)
+  pl = sp.user_playlist_create(user=sp.me()["id"], name=f"POMODORO: {GENRE}, About{TAG_TEMPO}BPM, {datetime.datetime.now().strftime('%Y%m%d')}", public=False)
   sp.playlist_add_items(playlist_id=pl["id"], items=playlist_ids )
   
 main()
