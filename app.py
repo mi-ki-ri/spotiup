@@ -33,7 +33,7 @@ def main():
     print("TEMPO:" , TAG_TEMPO)
     print("GENRE:", GENRE)
 
-    recommend = sp.recommendations(seed_tracks=random.sample( playlist_ids, min(len(playlist_ids), 3) ), seed_genres=[GENRE],  limit=1, min_tempo=(TAG_TEMPO), max_tempo=(TAG_TEMPO + 5), max_duration_ms=min(5*60*1000, UNTIL_POMODORO*1000))
+    recommend = sp.recommendations(seed_genres=[GENRE],  limit=1, min_tempo=(TAG_TEMPO), max_tempo=(TAG_TEMPO + 5), max_duration_ms=min(5*60*1000, UNTIL_POMODORO*1000))
 
     if len( recommend["tracks"] ) == 0:
 
@@ -52,7 +52,7 @@ def main():
     time.sleep(0.1)
 
   # rest track
-  recommend = sp.recommendations(seed_tracks=random.sample( playlist_ids, min(len(playlist_ids), 3) ), seed_genres=[GENRE], limit=1, min_tempo=(TAG_TEMPO - 25), max_tempo=(TAG_TEMPO-15), min_duration_ms=4*60*1000, max_duration_ms=6*60*1000)
+  recommend = sp.recommendations(seed_genres=[GENRE], limit=1, min_tempo=(TAG_TEMPO - 30), max_tempo=(TAG_TEMPO-20), min_duration_ms=4*60*1000, max_duration_ms=6*60*1000)
 
   playlist_ids.append(recommend["tracks"][0]["id"])
   print(recommend["tracks"][0]["name"],recommend["tracks"][0]["id"])
